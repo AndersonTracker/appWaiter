@@ -3,14 +3,6 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import Variaveis from "../../../components/global/Variaveis";
 import { Feather } from 'react-native-vector-icons';
-import almoco from '../../../../assets/almoco.jpg';
-import refrigerante from '../../../../assets/refrigerante.png';
-import sucos from '../../../../assets/sucos.jpg';
-import caipirinha from '../../../../assets/caipirinha.jpg';
-import destilados from '../../../../assets/destilados.jpg';
-import vinhos from '../../../../assets/vinhos.jpg';
-import beer from '../../../../assets/beer.jpg';
-import drinks from '../../../../assets/drinks.jpg';
 
 function MenuHomeProduct({navigation, route}) {
     
@@ -33,6 +25,8 @@ function MenuHomeProduct({navigation, route}) {
         if(value == "Almoços"){
             navigation.navigate('ProductLunchs', { 
                 commands_id: commands_id, 
+                commands_client_name: commands_client_name,
+                commands_table: commands_table
             });
         }
     };
@@ -56,19 +50,19 @@ function MenuHomeProduct({navigation, route}) {
             <View style={estilos.ViewRow}>
                 <View style={estilos.ViewLunch}>
                     <TouchableOpacity onPress={() => {navegar("Almoços")}}> 
-                        <Image source={almoco} style={estilos.imageAlmoco}></Image>
+                        <Image source={{uri: Variaveis.urlBase + ':8080/images/almoco.jpg'}} style={estilos.imageAlmoco}></Image>
                         <Text style={estilos.textImage}>Almoços</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={estilos.ViewLunch}>
                     <TouchableOpacity onPress={() => {navegar("Refrigerantes")}}> 
-                        <Image source={refrigerante} style={estilos.imageAlmoco}></Image>
+                        <Image source={{uri: Variaveis.urlBase + ':8080/images/refrigerante.png'}} style={estilos.imageAlmoco}></Image>
                         <Text style={estilos.textImage}>Refrigerantes</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={estilos.ViewLunch}>
                     <TouchableOpacity onPress={() => {navegar("Sucos")}}> 
-                        <Image source={sucos} style={estilos.imageAlmoco}></Image>
+                        <Image source={{uri: Variaveis.urlBase + ':8080/images/sucos.jpg'}} style={estilos.imageAlmoco}></Image>
                         <Text style={estilos.textImage}>Sucos</Text>
                     </TouchableOpacity>
                 </View>
@@ -76,19 +70,19 @@ function MenuHomeProduct({navigation, route}) {
             <View style={estilos.ViewRow}>
                 <View style={estilos.ViewLunch}>
                     <TouchableOpacity onPress={() => {navegar("Caipirinhas")}}> 
-                        <Image source={caipirinha} style={estilos.imageAlmoco}></Image>
+                        <Image source={{uri: Variaveis.urlBase + ':8080/images/caipirinha.jpg'}} style={estilos.imageAlmoco}></Image>
                         <Text style={estilos.textImage}>Caipirinhas</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={estilos.ViewLunch}>
                     <TouchableOpacity onPress={() => {navegar("Destilados")}}> 
-                        <Image source={destilados} style={estilos.imageAlmoco}></Image>
+                        <Image source={{uri: Variaveis.urlBase + ':8080/images/destilados.jpg'}} style={estilos.imageAlmoco}></Image>
                         <Text style={estilos.textImage}>Destilados</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={estilos.ViewLunch}>
                     <TouchableOpacity onPress={() => {navegar("Vinhos")}}> 
-                        <Image source={vinhos} style={estilos.imageAlmoco}></Image>
+                        <Image source={{uri: Variaveis.urlBase + ':8080/images/vinhos.jpg'}} style={estilos.imageAlmoco}></Image>
                         <Text style={estilos.textImage}>Vinhos</Text>
                     </TouchableOpacity>
                 </View>
@@ -96,17 +90,21 @@ function MenuHomeProduct({navigation, route}) {
             <View style={estilos.ViewRow}>
                 <View style={estilos.ViewLunch}>
                     <TouchableOpacity onPress={() => {navegar("Cervejas")}}> 
-                        <Image source={beer} style={estilos.imageAlmoco}></Image>
+                        <Image source={{uri: Variaveis.urlBase + ':8080/images/beer.jpg'}} style={estilos.imageAlmoco}></Image>
                         <Text style={estilos.textImage}>Cervejas</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={estilos.ViewLunch}>
                     <TouchableOpacity onPress={() => {navegar("Drinks")}}> 
-                        <Image source={drinks} style={estilos.imageAlmoco}></Image>
+                        <Image source={{uri: Variaveis.urlBase + ':8080/images/drinks.jpg'}} style={estilos.imageAlmoco}></Image>
                         <Text style={estilos.textImage}>Drinks</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={estilos.ViewLunch}>
+                <TouchableOpacity onPress={() => {navegar("Drinks")}}> 
+                        <Image style={estilos.imageAlmoco}></Image>
+                        <Text style={estilos.textImage}>outros</Text>
+                    </TouchableOpacity>
                 </View>
             </View> 
         </View>
@@ -246,7 +244,6 @@ const estilos = StyleSheet.create({
         borderRadius: 6,
         borderColor: "black",
         borderWidth: 2
-        
       },
       imageAlmoco:{
         width: "100%",

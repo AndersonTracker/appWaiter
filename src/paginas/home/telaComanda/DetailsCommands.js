@@ -150,7 +150,6 @@ const estilos = StyleSheet.create({
         fontWeight: "400",
         fontSize: 16,
     },
-    
     viewTable: {
         width: "100%",
         height: "95%",
