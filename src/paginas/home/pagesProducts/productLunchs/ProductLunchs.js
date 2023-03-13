@@ -40,8 +40,10 @@ function ProductLunchs({navigation, route}) {
     
     function adicionarNaCommands(){
       var array = itemCommands;
-      array.map(function(elemento, índice, array){
-        fetch(Variaveis.urlBase + ":8080/webapp/rest/commands",
+      array.map(function(elemento){
+        if(elemento.item_commands_quantity > 0){
+          console.log(elemento.item_commands_quantity);
+          fetch(Variaveis.urlBase + ":8080/webapp/rest/ItemCommands",
           {
             method: "POST",
             headers: {
@@ -66,8 +68,9 @@ function ProductLunchs({navigation, route}) {
           }).catch((error) => {
             Alert.alert("Erro na criação.", "descrição: usuario ja existente.");
           });
-        });
-      }
+        }
+      });
+    }
 
 
     useLayoutEffect( () => {
@@ -230,7 +233,7 @@ function ProductLunchs({navigation, route}) {
           activeOpacity={0.7}
           onPress={adicionarNaCommands}
           style={estilos.touchableOpacityStyle}>
-          <Feather name="plus-circle" size={90} color="#131f"/>
+          <Feather name="check-circle" size={90} color="#131f"/>
         </TouchableOpacity>
     </View>
     }
@@ -358,6 +361,13 @@ const estilos = StyleSheet.create({
       marginTop: "3%",
       fontSize: 30,
       fontWeight: "bold",
-    }
+    },
+    touchableOpacityStyle: {
+      position: 'absolute',
+      marginTop: "160%",
+      marginLeft: "70%",
+      borderRadius: 60,
+      borderColor: "black",
+    },
 });
 export default ProductLunchs;
